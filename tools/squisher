@@ -164,7 +164,7 @@ rm -rf $REPACK/ota/recovery
 # Determine what to name the new signed package
 
 #MODVERSION=`sed -n -e'/ro\.modversion/s/^.*=//p' $REPACK/ota/system/build.prop`
-VERSION=`sed -n -e'/ro.rootbox.version/s/^.*=//p' $REPACK/ota/system/build.prop`
+VERSION=`sed -n -e'/ro.bluelightning.version/s/^.*=//p' $REPACK/ota/system/build.prop`
 MODVERSION="$VERSION"
 OUTFILE=$OUT/$MODVERSION.zip
 OVERLAYTARGET=`grep 'ro.pa.family=' $REPACK/ota/system/build.prop | sed -e 's/ro.pa.family=//g'`
@@ -199,28 +199,9 @@ cd `dirname $OUTFILE`
 $MD5 $img >$img.md5sum
 ZIPSIZE=`ls -lah $OUTFILE | awk '{ print $5}' `
 echo
-echo  -e $CL_BLU"  ____                    __    ____"                    
-echo  -e "                                                     "                                                                                             
-echo  -e "     ##### ## ###                              ##### /                          /        "                                                  
-echo  -e " ######  /##  ###                          ######  /        #                #/                               #     "                      
-echo  -e "/#   /  / ##   ##                         /#   /  /        ###               ##           #                  ###    "                      
-echo  -e"/    /  /  ##   ##                        /    /  /          #                ##          ##                   #       "                    
-echo  -e"   /  /   /    ##                            /  /                            ##          ##                       "                        
-echo  -e"   ## ##  /     ##  ##   ####      /##       ## ##         ###       /###     ##  /##   ######## ###  /###   ###   ###  /###     /###   "   
-echo  -e"   ## ## /      ##   ##    ###  / / ###      ## ##          ###     /  ###  / ## / ### ########   ###/ #### / ###   ###/ #### / /  ###  /  "
-echo  -e"   ## ##/       ##   ##     ###/ /   ###     ## ##           ##    /    ###/  ##/   ###   ##       ##   ###/   ##    ##   ###/ /    ###/   "
-echo  -e"   ## ## ###    ##   ##      ## ##    ###    ## ##           ##   ##     ##   ##     ##   ##       ##    ##    ##    ##    ## ##     ##    "
-echo  -e"   ## ##   ###  ##   ##      ## ########     ## ##           ##   ##     ##   ##     ##   ##       ##    ##    ##    ##    ## ##     ##    "
-echo  -e"   #  ##     ## ##   ##      ## #######      #  ##           ##   ##     ##   ##     ##   ##       ##    ##    ##    ##    ## ##     ##    "
-echo  -e"      /      ## ##   ##      ## ##              /            ##   ##     ##   ##     ##   ##       ##    ##    ##    ##    ## ##     ##    "
-echo  -e"  /##/     ###  ##   ##      /# ####    /   /##/           / ##   ##     ##   ##     ##   ##       ##    ##    ##    ##    ## ##     ##    "
-echo  -e" /  ########    ### / ######/ ## ######/   /  ############/  ### / ########   ##     ##   ##       ###   ###   ### / ###   ### ########    "
-echo  -e"/     ####       ##/   #####   ## ##### m /     #########     ##/    ### ###   ##    ##    ##       ###   ###   ##/   ###   ###  ### ###   "
-echo  -e"#                                       i #                               ###        /                                                ###  "
-echo  -e" ##                                     n  ##                       ####   ###      /                                           ####   ### "
-echo  -e"                                        u                         /######  /#      /                                          /######  /#  "
-echo  -e"                                        s                        /     ###/       /                                          /     ###/    "                                                                                                                     
-echo""
+echo  -e $CL_BLU"                                                                                                              
+
+
 echo -e $CL_CYN"===========-BlueLightning Package complete-==========="$CL_RST
 echo -e $CL_CYN"zip:"$CL_MAG" $OUTFILE"$CL_RST
 echo -e $CL_CYN"md5:"$CL_MAG" $(cat $img.md5sum | awk '{ print $1 }')"$CL_RST
